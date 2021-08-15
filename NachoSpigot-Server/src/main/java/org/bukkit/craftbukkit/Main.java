@@ -20,14 +20,6 @@ public class Main {
     public static boolean useConsole = true;
 
     public static void main(String[] args) {
-        try {
-            if(!SystemUtils.isJavaVersionAtLeast(JavaVersion.JAVA_15)) {
-                System.err.println("It seems like you are not using Java 15!");
-                System.out.println("The use of Java 15 is strongly recommended.");
-            }
-        } catch (Exception ignored) {
-            System.err.println("Failed to get Java version! Continuing either way..");
-        }
         OptionParser parser = new OptionParser() {
             {
                 acceptsAll(asList("?", "help"), "Show the help");

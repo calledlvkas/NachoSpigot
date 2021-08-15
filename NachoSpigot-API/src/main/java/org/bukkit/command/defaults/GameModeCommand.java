@@ -1,6 +1,7 @@
 package org.bukkit.command.defaults;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.apache.commons.lang.Validate;
@@ -22,6 +23,7 @@ public class GameModeCommand extends VanillaCommand {
         super("gamemode");
         this.description = "Changes the player to a specific game mode";
         this.usageMessage = "/gamemode <mode> [player]";
+        this.setAliases(Arrays.asList("gm"));
         this.setPermission("bukkit.command.gamemode");
     }
 

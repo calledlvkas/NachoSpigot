@@ -171,7 +171,7 @@
                         <manifestEntries>
                             <Main-Class>org.bukkit.craftbukkit.Main</Main-Class>
                             <Implementation-Title>CraftBukkit</Implementation-Title>
-                            <Implementation-Version>${describe}</Implementation-Version>
+                            <Implementation-Version>1.8.8</Implementation-Version>
                             <Implementation-Vendor>${maven.build.timestamp}</Implementation-Vendor>
                             <Specification-Title>Bukkit</Specification-Title>
                             <Specification-Version>${api.version}</Specification-Version>

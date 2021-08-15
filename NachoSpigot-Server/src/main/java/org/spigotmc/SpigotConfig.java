@@ -234,8 +234,7 @@ public class SpigotConfig
         bungee = getBoolean( "settings.bungeecord", false );
     }
 
-    private static void timings()
-    {
+    private static void timings() {
         boolean timings = getBoolean( "timings.enabled", true );
         boolean verboseTimings = getBoolean( "timings.verbose", true );
         TimingsManager.privacy = getBoolean( "timings.server-name-privacy", false );
@@ -283,7 +282,7 @@ public class SpigotConfig
     public static TObjectIntHashMap<String> forcedStats = new TObjectIntHashMap<String>();
     private static void stats()
     {
-        disableStatSaving = getBoolean( "stats.disable-saving", false );
+        disableStatSaving = getBoolean( "stats.disable-saving", true );
 
         if ( !config.contains( "stats.forced-stats" ) ) {
             config.createSection( "stats.forced-stats" );
@@ -298,18 +297,10 @@ public class SpigotConfig
             }
         }
 
-        if ( disableStatSaving && section.getInt( "achievement.openInventory", 0 ) < 1 )
-        {
-            Bukkit.getLogger().warning( "*** WARNING *** stats.disable-saving is true but stats.forced-stats.achievement.openInventory" +
-                    " isn't set to 1. Disabling stat saving without forcing the achievement may cause it to get stuck on the player's " +
-                    "screen." );
-        }
+        if ( disableStatSaving && section.getInt( "achievement.openInventory", 0 ) < 1 ) { }
     }
 
-    private static void tpsCommand()
-    {
-        commands.put( "tps", new TicksPerSecondCommand( "tps" ) );
-    }
+    private static void tpsCommand() { }
 
     public static int playerSample;
     private static void playerSample()
@@ -327,10 +318,7 @@ public class SpigotConfig
     public static List<String> spamExclusions;
     private static void spamExclusions()
     {
-        spamExclusions = getList( "commands.spam-exclusions", Arrays.asList( new String[]
-        {
-                "/skill"
-        } ) );
+        spamExclusions = getList( "commands.spam-exclusions", Arrays.asList("/skill") );
     }
 
     public static boolean silentCommandBlocks;

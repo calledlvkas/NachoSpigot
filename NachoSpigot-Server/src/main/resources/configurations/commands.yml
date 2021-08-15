@@ -12,5 +12,3 @@
 
 command-block-overrides: []
 aliases:
-    icanhasbukkit:
-      - "version $1-"

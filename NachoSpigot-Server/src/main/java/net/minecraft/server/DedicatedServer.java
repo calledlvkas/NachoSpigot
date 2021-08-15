@@ -114,7 +114,6 @@ public class DedicatedServer extends MinecraftServer implements IMinecraftServer
 
         thread.setDaemon(true);
         thread.start();
-        DedicatedServer.LOGGER.info("Starting minecraft server version 1.8.8");
         if (Runtime.getRuntime().maxMemory() / 1024L / 1024L < 512L) {
             DedicatedServer.LOGGER.warn("To start the server with more ram, launch it as \"java -Xmx1024M -Xms1024M -jar minecraft_server.jar\"");
         }
@@ -143,12 +142,12 @@ public class DedicatedServer extends MinecraftServer implements IMinecraftServer
                 this.c(this.propertyManager.getString("server-ip", ""));
             }
 
-            this.setSpawnAnimals(this.propertyManager.getBoolean("spawn-animals", true));
+            this.setSpawnAnimals(this.propertyManager.getBoolean("spawn-animals", false));
             this.setSpawnNPCs(this.propertyManager.getBoolean("spawn-npcs", true));
             this.setPVP(this.propertyManager.getBoolean("pvp", true));
             this.setAllowFlight(this.propertyManager.getBoolean("allow-flight", false));
             this.setResourcePack(this.propertyManager.getString("resource-pack", ""), this.propertyManager.getString("resource-pack-hash", ""));
-            this.setMotd(this.propertyManager.getString("motd", "A Minecraft Server"));
+            this.setMotd(this.propertyManager.getString("motd", ""));
             this.setForceGamemode(this.propertyManager.getBoolean("force-gamemode", false));
             this.setIdleTimeout(this.propertyManager.getInt("player-idle-timeout", 0));
             if (this.propertyManager.getInt("difficulty", 1) < 0) {
@@ -157,7 +156,7 @@ public class DedicatedServer extends MinecraftServer implements IMinecraftServer
                 this.propertyManager.setProperty("difficulty", Integer.valueOf(3));
             }
 
-            this.generateStructures = this.propertyManager.getBoolean("generate-structures", true);
+            this.generateStructures = this.propertyManager.getBoolean("generate-structures", false);
             int i = this.propertyManager.getInt("gamemode", WorldSettings.EnumGamemode.SURVIVAL.getId());
 
             this.r = WorldSettings.a(i);
@@ -183,7 +182,6 @@ public class DedicatedServer extends MinecraftServer implements IMinecraftServer
             Nacho.get().registerCommands(); // NachoSpigot :: Commands
             Knockback.get().registerCommands(); // NS Knockback :: Commands
 
-            DedicatedServer.LOGGER.info("Generating keypair");
             this.a(MinecraftEncryption.b());
             DedicatedServer.LOGGER.info("Starting Minecraft server on " + (this.getServerIp().length() == 0 ? "*" : this.getServerIp()) + ":" + this.R());
 
@@ -257,7 +255,7 @@ public class DedicatedServer extends MinecraftServer implements IMinecraftServer
                 }
 
                 String s = this.propertyManager.getString("level-seed", "");
-                String s1 = this.propertyManager.getString("level-type", "DEFAULT");
+                String s1 = this.propertyManager.getString("level-type", "FLAT");
                 String s2 = this.propertyManager.getString("generator-settings", "");
                 long k = (new Random()).nextLong();
 
@@ -407,11 +405,11 @@ public class DedicatedServer extends MinecraftServer implements IMinecraftServer
     }
 
     public boolean getAllowNether() {
-        return this.propertyManager.getBoolean("allow-nether", true);
+        return this.propertyManager.getBoolean("allow-nether", false);
     }
 
     public boolean getSpawnMonsters() {
-        return this.propertyManager.getBoolean("spawn-monsters", true);
+        return this.propertyManager.getBoolean("spawn-monsters", false);
     }
 
     public void a(MojangStatisticsGenerator mojangstatisticsgenerator) {
@@ -555,7 +553,7 @@ public class DedicatedServer extends MinecraftServer implements IMinecraftServer
     }
 
     public boolean aB() {
-        return this.propertyManager.getBoolean("announce-player-achievements", true);
+        return this.propertyManager.getBoolean("announce-player-achievements", false);
     }
 
     public int aI() {

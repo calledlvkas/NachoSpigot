@@ -1,6 +1,7 @@
 package org.bukkit.command.defaults;
 
 import java.util.Arrays;
+import java.util.List;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -14,23 +15,25 @@ public class PluginsCommand extends BukkitCommand {
         this.usageMessage = "/plugins";
         this.setPermission("bukkit.command.plugins");
         this.setAliases(Arrays.asList("pl"));
+
     }
 
     @Override
     public boolean execute(CommandSender sender, String currentAlias, String[] args) {
         if (!testPermission(sender)) return true;
 
-        sender.sendMessage("Plugins " + getPluginList());
+        sender.sendMessage("§7Plugins " + getPluginList());
         return true;
     }
 
     private String getPluginList() {
         StringBuilder pluginList = new StringBuilder();
-        Plugin[] plugins = Bukkit.getPluginManager().getPlugins();
+        List<Plugin> plugins = Arrays.asList(Bukkit.getPluginManager().getPlugins());
+        plugins.sort((a,b) -> a.getName().compareTo(b.getName()));
 
         for (Plugin plugin : plugins) {
             if (pluginList.length() > 0) {
-                pluginList.append(ChatColor.WHITE);
+                pluginList.append(ChatColor.GRAY);
                 pluginList.append(", ");
             }
 
@@ -38,7 +41,7 @@ public class PluginsCommand extends BukkitCommand {
             pluginList.append(plugin.getDescription().getName());
         }
 
-        return "(" + plugins.length + "): " + pluginList.toString();
+        return "§8(§e" + plugins.size() + "§8): " + pluginList.toString();
     }
 
     // Spigot Start

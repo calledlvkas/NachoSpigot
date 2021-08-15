@@ -54,12 +54,7 @@ public class Nacho {
         return config;
     }
 
-    public void registerCommands() {
-        SetMaxSlotCommand setMaxSlotCommand = new SetMaxSlotCommand("sms"); //[Nacho-0021] Add setMaxPlayers within Bukkit.getServer() and SetMaxSlot Command
-        SpawnMobCommand spawnMobCommand = new SpawnMobCommand("spawnmob");
-        MinecraftServer.getServer().server.getCommandMap().register(setMaxSlotCommand.getName(), "ns", setMaxSlotCommand);
-        MinecraftServer.getServer().server.getCommandMap().register(spawnMobCommand.getName(), "ns", spawnMobCommand);
-    }
+    public void registerCommands() { }
 
     public void registerPacketListener(PacketListener packetListener) {
         this.packetListeners.add(packetListener);
@@ -82,8 +77,6 @@ public class Nacho {
     public Set<MovementListener> getMovementListeners() { return movementListeners; }
 
     public void applyPatches() {
-        // Nacho start - [Nacho-0041] Fix block placement
         RuntimePatches.applyViaVersionBlockPatch();
-        // Nacho end
     }
 }

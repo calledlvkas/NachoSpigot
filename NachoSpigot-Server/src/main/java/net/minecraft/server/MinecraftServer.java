@@ -917,7 +917,7 @@ public abstract class MinecraftServer implements Runnable, ICommandListener, IAs
     }
 
     public boolean getAllowNether() {
-        return true;
+        return false;
     }
 
     public void a(IUpdatePlayerListBox iupdateplayerlistbox) {
