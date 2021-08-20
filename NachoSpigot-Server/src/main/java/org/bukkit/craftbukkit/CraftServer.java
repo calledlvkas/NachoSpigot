@@ -1566,15 +1566,6 @@ public final class CraftServer implements Server {
         return console.console;
     }
 
-    @Override
-    public boolean versionCommandEnabled() {
-        return Nacho.get().getConfig().enableVersionCommand;
-    }
-
-    @Override
-    public boolean reloadCommandEnabled() {
-        return Nacho.get().getConfig().enableReloadCommand;
-    }
 
     @Override
     public boolean pluginsCommandEnabled() {

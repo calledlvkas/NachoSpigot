@@ -204,7 +204,7 @@ public class SpigotConfig
         }
 
         whitelistMessage = transform( getString( "messages.whitelist", "You are not whitelisted on this server!" ) );
-        unknownCommandMessage = transform( getString( "messages.unknown-command", "Unknown command. Type \"/help\" for help." ) );
+        unknownCommandMessage = transform( getString( "messages.unknown-command", "§7The command could not be found!" ) );
         serverFullMessage = transform( getString( "messages.server-full", "The server is full!" ) );
         outdatedClientMessage = transform( getString( "messages.outdated-client", outdatedClientMessage ) );
         outdatedServerMessage = transform( getString( "messages.outdated-server", outdatedServerMessage ) );
@@ -219,8 +219,8 @@ public class SpigotConfig
         timeoutTime = getInt( "settings.timeout-time", timeoutTime );
         restartOnCrash = getBoolean( "settings.restart-on-crash", restartOnCrash );
         restartScript = getString( "settings.restart-script", restartScript );
-        restartMessage = transform( getString( "messages.restart", "Server is restarting" ) );
-        commands.put( "restart", new RestartCommand( "restart" ) );
+        restartMessage = transform( getString( "messages.restart", "§cServer is restarting" ) );
+//        commands.put( "restart", new RestartCommand( "restart" ) );
         WatchdogThread.doStart( timeoutTime, restartOnCrash );
     }
 
