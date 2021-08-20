@@ -34,11 +34,6 @@ public class Nacho {
 
         AsyncExplosions.initExecutor(config.useFixedPoolForTNT, config.fixedPoolSize);
 
-        if(this.config.enableAntiCrash) {
-            System.out.println("[NS-AntiCrash] Activating Anti Crash.");
-            Nacho.get().registerPacketListener(new AntiCrash());
-            System.out.println("[NS-AntiCrash] Activated Anti Crash.");
-        }
     }
 
     public void reloadConfig() {
