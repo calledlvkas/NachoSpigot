@@ -24,11 +24,6 @@ public class StopCommand extends VanillaCommand {
     @Override
     public boolean execute(CommandSender sender, String currentAlias, String[] args) {
         if (!testPermission(sender)) return true;
-        if (StringUtils.isNotEmpty(Bukkit.getShutdownMessage())) {
-            for (Player player : Bukkit.getOnlinePlayers()) {
-                player.kickPlayer(Bukkit.getShutdownMessage());
-            }
-        }
         Bukkit.shutdown();
 
         String reason = this.createString(args, 0);

@@ -5,10 +5,12 @@ import java.util.List;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.plugin.Plugin;
 
 public class PluginsCommand extends BukkitCommand {
+
     public PluginsCommand(String name) {
         super(name);
         this.description = "Gets a list of plugins running on the server";
@@ -20,8 +22,7 @@ public class PluginsCommand extends BukkitCommand {
 
     @Override
     public boolean execute(CommandSender sender, String currentAlias, String[] args) {
-        if (!testPermission(sender)) return true;
-
+        if(!testPermission(sender)) return true;
         sender.sendMessage("§7Plugins " + getPluginList());
         return true;
     }
@@ -41,7 +42,7 @@ public class PluginsCommand extends BukkitCommand {
             pluginList.append(plugin.getDescription().getName());
         }
 
-        return "§8(§e" + plugins.size() + "§8): " + pluginList.toString();
+        return "§8(§e" + plugins.size() + "§8): " + pluginList;
     }
 
     // Spigot Start
